@@ -9,6 +9,9 @@ import myreducer from './reducers/index.js';
 import MainView from './main/main.js';
 import LoginView from './login.js';
 
+// import semantic-ui css file
+import 'semantic-ui-css/semantic.min.css';
+
 const store = createStore(myreducer);
 
 // presentational component
