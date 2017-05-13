@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "browserify src/javascripts/react/index.js -o public/build/javascripts/index_min.js",
+    "build": "gulp build-pro",
     "watch": "watchify src/javascripts/react/index.js -o public/build/javascripts/index_min.js -v"
   },
   "browserify": {
