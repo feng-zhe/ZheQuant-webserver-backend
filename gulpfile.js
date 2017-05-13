@@ -80,10 +80,9 @@ gulp.task('react', function(done) {
 
 // copy files
 gulp.task('copy',function(done){
-    done();
-    //return gulp
-        //.src(['./src/semantic/dist/**/*'])
-        //.pipe(gulp.dest('./public/build/css/'));
+    return gulp
+        .src(['./src/css/**/*'])
+        .pipe(gulp.dest('./public/build/css/'));
 });
 
 // before hook
