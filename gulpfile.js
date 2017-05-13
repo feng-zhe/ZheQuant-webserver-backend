@@ -88,16 +88,20 @@ gulp.task('copy',function(done){
 // before hook
 gulp.task('build-start', function(done) {
     // check whether config.json exists, if not, use default values
-    let file_name = './config.json';
     try{
         fs.readFileSync('./config.json');
+        done();
+        return;
     } catch(e) {
-        file_name = './config-template.json';
+        // create config.json
+        return gulp
+            .src('./config-default.json')
+            .pipe(gRename(function(fpath) {
+                fpath.basename = 'config';
+                fpath.extname = '.json';
+            }))
+            .pipe(gulp.dest('./'));
     }
-    // create config.json file for frontend
-    return gulp
-        .src(file_name)
-        .pipe(gulp.dest('./src/javascripts/react/'));
 });
 
 // after hook
