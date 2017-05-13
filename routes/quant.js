@@ -1,11 +1,12 @@
 'use strict';
 
 const express = require('express');
-const storage = require(_appRoot + '/libs/storage');
 const amqp = require('amqplib/callback_api');
+const storage = require(_appRoot + '/libs/storage');
 
-const rabbitmq_url = require(_appRoot + '/config.json').rabbitmq_url;
 const router = express.Router();
+
+const rabbitmq_url = require(_appRoot + '/libs/config.js').rabbitmq_url;
 
 router.post('/results', function(req, res, next) {
     if (!req.body.userId ||

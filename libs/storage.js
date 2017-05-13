@@ -1,7 +1,7 @@
 'use strict';
 
 const MongoClient = require('mongodb').MongoClient;
-const mongodb_url = require(_appRoot + '/config.json').mongodb_url;
+const mongodb_url = require('./config.js').mongodb_url;
 
 // authenticate the user and login
 function userLogin(userId, password, cb) {

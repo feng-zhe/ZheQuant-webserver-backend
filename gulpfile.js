@@ -87,9 +87,16 @@ gulp.task('copy',function(done){
 
 // before hook
 gulp.task('build-start', function(done) {
+    // check whether config.json exists, if not, use default values
+    let file_name = './config.json';
+    try{
+        fs.readFileSync('./config.json');
+    } catch(e) {
+        file_name = './config-template.json';
+    }
     // create config.json file for frontend
     return gulp
-        .src('./config.json')
+        .src(file_name)
         .pipe(gulp.dest('./src/javascripts/react/'));
 });
 
