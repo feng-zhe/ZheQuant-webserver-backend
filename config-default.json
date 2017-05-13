@@ -1,5 +1,5 @@
 {
     "backend_url": "http://localhost:3000",
-    "mongodb_url": "mongodb://db/fin",
+    "mongodb_url": "mongodb://test:test@db/fin?authSource=admin",
     "rabbitmq_url": "amqp://rabbitmq"
 }
