@@ -9,4 +9,4 @@ try {
     config = fs.readFileSync(_appRoot + '/config.json');
 } catch (e) {}
 
-export config;
+module.exports = config;
