@@ -2,11 +2,11 @@
 
 const fs = require('fs');
 
-let config = fs.readFileSync(_appRoot + '/config-default.json');
+let content = fs.readFileSync(_appRoot + '/config-default.json');
 
 // try to read customized configuration file
 try {
-    config = fs.readFileSync(_appRoot + '/config.json');
+    content = fs.readFileSync(_appRoot + '/config.json');
 } catch (e) {}
 
-module.exports = config;
+module.exports = JSON.parse(content);
