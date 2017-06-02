@@ -14,7 +14,7 @@ function userLogin(userId, password, cb) {
         db.collection('users')
             .findOne({
                 id: userId,
-                passwd: password.toUpperCase()
+                passwd: password.toLowerCase() // use lower case in db
             }, function(err, user) {
                 if (err) {
                     console.log('[ERROR]', err);
