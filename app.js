@@ -9,6 +9,7 @@ global._appRoot = __dirname;
  * reuqired modules
  */
 const express = require('express');
+const cors = require('cors');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -20,6 +21,7 @@ const quantRouter = require('./routes/quant');
 
 const app = express();
 
+app.use(cors()); // for cross origin resource sharing
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

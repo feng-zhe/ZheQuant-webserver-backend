@@ -15,13 +15,13 @@ router.post('/auth', function(req, res, next) {
     // query the database
     storage.userLogin(userId, password, function(user) {
         if (user) {
-            res.send({
+            res.json({
                 success: true,
                 userId: user.id,
                 token: user.passwd // TODO: currently use password as token
             });
         } else { // no such user
-            res.send({
+            res.json({
                 success: false
             });
         }
