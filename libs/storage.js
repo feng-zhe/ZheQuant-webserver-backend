@@ -351,9 +351,7 @@ function updateJob(job, cb) {
         // write to database
         db.collection('job_results')
             .updateOne({
-                name: job.name,
-                creator: job.creator,
-                create_date: job.create_date
+                'id': job.id
             }, {
                 $set: {
                     status: job.status,

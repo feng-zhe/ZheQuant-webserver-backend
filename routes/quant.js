@@ -40,7 +40,6 @@ router.post('/jobs', function(req, res, next) {
     const job_name = req.body.job_name;
     const description = req.body.description;
     const cmd = req.body.cmd;
-    // add the job into the database and job queue
     const job = {
         name: job_name,
         creator: userId,
@@ -56,6 +55,7 @@ router.post('/jobs', function(req, res, next) {
             res.status(err.status || 500).send('error');
             return;
         }
+        // add job info to db, then send to rabbitmq
         storage.addNewJob(userId, token, job,  function(err, result) {
             if (err) {
                 res.status(err.status || 500).send('error');
@@ -71,6 +71,10 @@ router.post('/jobs', function(req, res, next) {
                     ch.assertQueue(qname, {
                         durable: true
                     });
+                    const job4mq = {
+                        id: result.insertedId,
+                        cmd: job.cmd
+                    }
                     ch.sendToQueue(qname, Buffer.from(JSON.stringify(job)));
                     console.log('[INFO]', 'job has been sent to rabbitmq');
                     res.send('success');
@@ -103,7 +107,6 @@ router.post('/jobs', function(req, res, next) {
                 ch.ack(msg);
                 // update database
                 const job = JSON.parse(msg.content.toString());
-                job.create_date = new Date(job.create_date);
                 storage.updateJob(job, function() {});
             }, {
                 noAck: false
