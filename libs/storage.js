@@ -351,11 +351,11 @@ function updateJob(job, cb) {
         // write to database
         db.collection('job_results')
             .updateOne({
-                'id': job.id
+                '_id': job.id
             }, {
                 $set: {
                     status: job.status,
-                    result: job.result
+                    result: JSON.stringify(job.result)
                 }
             }, function(err, r) {
                 cb(err, r);

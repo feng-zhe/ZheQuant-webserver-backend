@@ -75,8 +75,8 @@ router.post('/jobs', function(req, res, next) {
                         id: result.insertedId,
                         cmd: job.cmd
                     }
-                    ch.sendToQueue(qname, Buffer.from(JSON.stringify(job)));
-                    console.log('[INFO]', 'job has been sent to rabbitmq');
+                    ch.sendToQueue(qname, Buffer.from(JSON.stringify(job4mq)));
+                    console.log('[INFO]', 'job has been sent to rabbitmq:', job4mq);
                     res.send('success');
                 });
             }
