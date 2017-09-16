@@ -55,7 +55,7 @@ class ConsoleImp extends React.Component {
                         <Input name='cmd' placeholder='Enter Command Here' />
                     </Form.Field>
                 </Form>
-                <Label> schedule -n jobname -dsc "moving average" -t mv-avg -p "-d 20 -n 5" </Label>
+                <Label> schedule -n jobname -dsc "moving average" -t mv_avg -p "-d 20 -n 5" </Label>
             </Container>
         );
     }
