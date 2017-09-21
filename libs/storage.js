@@ -1,7 +1,8 @@
 'use strict';
 
-const MongoClient = require('mongodb').MongoClient;
-const mongodb_url = require('./config.js').mongodb_url;
+const mongo         = require('mongodb');
+const MongoClient   = mongo.MongoClient;
+const mongodb_url   = require('./config.js').mongodb_url;
 
 // authenticate the user and login
 function userLogin(userId, password, cb) {
@@ -351,7 +352,7 @@ function updateJob(job, cb) {
         // write to database
         db.collection('job_results')
             .updateOne({
-                '_id': job.id
+                '_id': new mongo.ObjectId(job.id)
             }, {
                 $set: {
                     status: job.status,
