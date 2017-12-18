@@ -352,7 +352,7 @@ function updateJob(job, cb) {
         // write to database
         db.collection('job_results')
             .updateOne({
-                '_id': new mongo.ObjectId(job.id)
+                '_id': new mongo.ObjectId(job._id)
             }, {
                 $set: {
                     status: job.status,

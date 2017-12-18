@@ -6,6 +6,20 @@
 global._appRoot = __dirname;
 
 /*
+ * if NODE_ENV is 'dev|development', use mock modules
+ * so that we can test this component isolatedly
+ */
+const mockery = require('mockery');
+if (process.env.NODE_ENV == 'dev' || 
+        process.env.NODE_ENV == 'development'){
+    mockery.enable({
+        warnOnUnregistered: false
+    });
+    mockery.registerSubstitute('amqplib/callback_api', _appRoot + '/tests/mocks/amqp-mock');
+    mockery.registerSubstitute('mongodb', _appRoot + '/tests/mocks/mongodb-mock');
+}
+
+/*
  * reuqired modules
  */
 const express = require('express');

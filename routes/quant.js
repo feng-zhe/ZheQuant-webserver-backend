@@ -107,6 +107,7 @@ router.post('/jobs', function(req, res, next) {
                 ch.ack(msg);
                 // update database
                 const job = JSON.parse(msg.content.toString());
+                job._id = job.id;   // make the name same as database table field
                 storage.updateJob(job, function() {});
             }, {
                 noAck: false

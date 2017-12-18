@@ -64,6 +64,7 @@
     "gulp-util": "^3.0.7",
     "less-plugin-clean-css": "^1.5.1",
     "mocha": "^3.2.0",
+    "mockery": "^2.1.0",
     "run-sequence": "^1.2.2",
     "vinyl-buffer": "^1.0.0"
   }
