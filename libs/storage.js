@@ -32,7 +32,7 @@ function _userAuth(userId, token, db, cb) {
     db.collection('users')
         .findOne({
             id: userId,
-            passwd: token.toUpperCase() // TODO: use token
+            passwd: token.toLowerCase() // TODO: use token
         }, cb);
 }
 
@@ -41,7 +41,7 @@ function userAuth(userId, token, cb) {
         db.collection('users')
             .findOne({
                 id: userId,
-                passwd: token.toUpperCase() // TODO: use token
+                passwd: token.toLowerCase() // TODO: use token
             }, cb);
     });
 }

@@ -10,7 +10,7 @@ const users = { // one test user with password 'test'
     {
         _id: crypto.randomBytes(16).toString('hex'),
         id: 'test',
-        passwd: '098F6BCD4621D373CADE4E832627B4F6'
+        passwd: '098f6bcd4621d373cade4e832627b4f6'
     }
     ],
     find(opt){
