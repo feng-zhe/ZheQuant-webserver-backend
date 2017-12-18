@@ -1,0 +1,20 @@
+language: node_js
+
+node_js:
+    - "node"
+    - "8"
+    - "7"
+    - "6"
+
+env:
+    - NODE_ENV=dev
+
+install:
+    npm install
+
+before_script:
+    - npm install -g gulp-cli
+
+script:
+    - gulp build
+    - gulp unit-test
