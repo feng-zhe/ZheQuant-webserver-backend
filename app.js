@@ -15,8 +15,8 @@ if (process.env.NODE_ENV == 'dev' ||
     mockery.enable({
         warnOnUnregistered: false
     });
-    mockery.registerSubstitute('amqplib/callback_api', _appRoot + '/tests/mocks/amqp-mock');
-    mockery.registerSubstitute('mongodb', _appRoot + '/tests/mocks/mongodb-mock');
+    mockery.registerSubstitute('amqplib/callback_api', _appRoot + '/mocks/amqp-mock');
+    mockery.registerSubstitute('mongodb', _appRoot + '/mocks/mongodb-mock');
 }
 
 /*
@@ -42,7 +42,6 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 // for loan api
 app.use('/loan', loanRouter);
@@ -52,18 +51,6 @@ app.use('/user', userRouter);
 
 // for quant api
 app.use('/quant',quantRouter);
-
-// return the web page when visit root
-app.get('/', function(req, res, next) {
-    res.sendFile('src/views/index.html', {
-        root: __dirname
-    });
-});
-
-// no favico.ico
-app.get('/favicon.ico', function(req, res, next) {
-    res.status(204).send();
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
